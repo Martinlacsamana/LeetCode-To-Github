@@ -5,6 +5,8 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+
+        # Just to see what happens here 
         seen = {}
         # add the difference (key) and index of the number
         for index, num in enumerate(nums):
