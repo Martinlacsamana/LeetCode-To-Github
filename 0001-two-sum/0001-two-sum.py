@@ -5,21 +5,23 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-
-        # Just to see what happens here 
+        # Dictionary to store the numbers we have seen and their indices
         seen = {}
-        # add the difference (key) and index of the number
+        
+        # Iterate through the list of numbers
         for index, num in enumerate(nums):
-            # check if target - num is in hashmap
+            # Calculate the difference needed to reach the target
             diff = target - num
+            
+            # Check if the difference is already in the dictionary
             if diff in seen:
+                # If found, return the current index and the index of the difference
                 return [index, seen.get(diff)]
             
-            # else, just add to hashmap
+            # Otherwise, add the current number and its index to the dictionary
             seen[num] = index
+
+        # Time Complexity: O(n), as we traverse the list once
+        # Space Complexity: O(n), as we store each number in the dictionary
+
         
-        # NOTES
-        # Time Complexity: O(n)
-        # Space Complexity: O(n)
-        # Check to see if the complement -> target - num is in the hashmap
-        # If not, just add the number to this dictionary
