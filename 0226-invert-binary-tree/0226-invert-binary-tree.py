@@ -6,22 +6,27 @@
 #         self.right = right
 class Solution:
     # Strat: Regular DFS with just swapping nodes
+
+    # Time Complexity: O(n) - We iterate throgh the nodes once.
+    # Space Complexity: O(n) - We open up n frames for the recursion.
+
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         
-
-        def dfs(node):
-            if not node:
-                return
-
-            temp = node.left
-            node.left = node.right
-            node.right = temp
-
-            dfs(node.left)
-            dfs(node.right)
+        if not root:
+            return None
         
-        dfs(root)
+        # Swap the right and left branches
+        temp = root.left
+        root.left = root.right
+        root.right = temp
+
+        self.invertTree(root.right)
+        self.invertTree(root.left)
+
         return root
+
+      
+        
 
             
         
